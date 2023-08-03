@@ -1,8 +1,8 @@
 {
-  "name": "markdown-create-file",
-  "displayName": "markdown-create-file",
+  "name": "markdown-blog-extension",
+  "displayName": "Markdown Blog Extension",
   "description": "A companion extension to my markdown-blog which will create a new file in the current directory complete with the required Yaml scaffolding",
-  "version": "0.0.1",
+  "version": "0.4.0",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -10,11 +10,17 @@
     "Other", "Snippets"
   ],
   "activationEvents": [],
-  "main": "./extension.js",
+  "main": "./src/extension.js",
   "contributes": {
     "commands": [{
-      "command": "markdown-create-file.createFile",
-      "title": "Markdown create file: Create File"
+      "command": "markdown-blog-extension.createFile",
+      "title": "Markdown Blog: Create File"
+    }],
+    "keybindings": [{
+      "command": "markdown-blog-extension.createFile",
+      "key": "ctrl+shift+c",
+      "mac": "cmd+shift+c",
+      "when": "editorTextFocus"
     }]
   },
   "scripts": {

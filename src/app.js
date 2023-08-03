@@ -34,7 +34,7 @@ class App{
 
         const filePath = path.join(currentDirectory, fileName);
         // fill the file with a YAML frontmatter
-        const data = `---\ntitle: ${originalFilename.split('.')[0]}\npublished_at: ${new Date().toISOString()}\nupdated_at: ${new Date().toISOString()}\ntype: article\ndescription: Enter description here\nlink: /${new Date().getFullYear()}/${originalFilename}\nimage: image.png\ntags: [tag1,tag2]\n---`;
+        const data = `---\ntitle: ${originalFilename.split('.')[0]}\npublished_at: ${new Date().toISOString()}\nupdated_at: ${new Date().toISOString()}\ntype: article\ndescription: Enter description here\nlink: /${new Date().getFullYear()}/${originalFilename}\nimage: images/image.png\ntags: [tag1,tag2]\n---`;
 
         fs.writeFile(filePath, data.trim(), err => {
             if(err) {

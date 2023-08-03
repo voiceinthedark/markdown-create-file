@@ -18,7 +18,7 @@ function activate(context) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('markdown-create-file.createFile', function () {
+	let disposable = vscode.commands.registerCommand('markdown-blog-extension.createFile', function () {
 		// The code you place here will be executed every time your command is executed
 		
 		let currentDirectory = app.getCurrentDirectory();
@@ -40,6 +40,10 @@ function activate(context) {
 		}).then(function (fileName) {
 			// Create file in current directory
 			let filepath = app.createFile(currentDirectory, fileName);
+			if(!filepath) {
+				app.showErrorMessage('Failed to create file');
+				return;
+			}
 			// get the last created file and show it
 			vscode.window.showTextDocument(vscode.Uri.file(filepath));
 		})
