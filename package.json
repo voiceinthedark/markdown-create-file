@@ -5,7 +5,7 @@
   "version": "0.4.0",
   "publisher": "voiceinthedark",
   "license": "MIT",
-  "icon": "icon.png",
+  "icon": "voiceinthedark.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/voiceinthedark/markdown-create-file"

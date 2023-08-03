@@ -9,11 +9,9 @@ A new markdown file will be created in the current directory with the required Y
 Or inside the active text editor press `ctrl + shift + c`
 
 ## Installation
-
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+To install an extension, run the following command:
+`code --install-extension markdown-blog-extension-0.4.0.vsix`
+or download from Visual studio marketplace: [Marketplace](https://marketplace.visualstudio.com/items?itemName=voiceinthedark.markdown-blog-extension)
 
 ## Release Notes
 ### 0.4.0
