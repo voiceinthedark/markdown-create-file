@@ -1,0 +1,10 @@
+---
+title: How To Send data from a Vue Page to a persistent Layout
+published_at: 2023-07-30T00:39:00+03:00
+updated_at: 2023-08-02T22:56:00+03:00
+type: article
+description: How to send data from a vue page to a persistent layout in Laravel + inertiajs
+link: /2023/2023-07-30-how-to-send-data-from-page-to-layout
+image: /images/2023-07-31-04-22-45.png
+tags: [vue, inertia, laravel, php, blog, layout]
+---
