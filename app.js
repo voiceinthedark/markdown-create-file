@@ -28,9 +28,13 @@ class App{
     }   
 
     createFile(currentDirectory, fileName) {
+        const originalFilename = fileName;
+        // prefixes filename with the current date
+        fileName = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}-${fileName}`;
+
         const filePath = path.join(currentDirectory, fileName);
         // fill the file with a YAML frontmatter
-        const data = `---\ntitle: ${fileName}\npublished_at: ${new Date().toISOString()}\nupdated_at: ${new Date().toISOString()}\ntype: article\ndescription: ${fileName}\nlink: /${new Date().getFullYear()}/${fileName}\nimage:\ntags:[]\n---`;
+        const data = `---\ntitle: ${originalFilename.split('.')[0]}\npublished_at: ${new Date().toISOString()}\nupdated_at: ${new Date().toISOString()}\ntype: article\ndescription: Enter description here\nlink: /${new Date().getFullYear()}/${originalFilename}\nimage: image.png\ntags: [tag1,tag2]\n---`;
 
         fs.writeFile(filePath, data.trim(), err => {
             if(err) {
