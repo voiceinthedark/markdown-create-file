@@ -13,7 +13,7 @@ function activate(context) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "markdown-create-file" is now active!');
+	
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
@@ -39,11 +39,11 @@ function activate(context) {
 			ignoreFocusOut: true,			
 		}).then(function (fileName) {
 			// Create file in current directory
-			app.createFile(currentDirectory, fileName);
+			let filepath = app.createFile(currentDirectory, fileName);
+			// get the last created file and show it
+			vscode.window.showTextDocument(vscode.Uri.file(filepath));
 		})
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from markdown-create-file!');
+		
 	});
 
 	context.subscriptions.push(disposable);

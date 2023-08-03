@@ -11,59 +11,35 @@ class App{
             return '';
         }
         const currentDirectory = path.dirname(currentPath);
+
         return currentDirectory;
     }
 
     getWorkspacePath() {
-        const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri?.path;
-        return workspacePath;
-    }
-
-    checkIsFile(filePath) {
-        return fs.existsSync(filePath);
-    }
-
-    parseFileOrDirectory(fullPaths) {
-        const filePaths = [];
-        const folderPaths = [];
-
-        fullPaths.forEach(fullPath => {
-            if(this.checkIsFile(fullPath)) {
-                filePaths.push(fullPath);
-            } else {
-                folderPaths.push(fullPath);
-            }
-        });
-        return {filePaths, folderPaths};
-
-    }
-
-    parseUserInput(userInputs) {
-        const {filePaths, folderPaths} = this.parseFileOrDirectory(userInputs);
-        return {filePaths, folderPaths};        
-    }
+        // Get the active workspace folder
+        let workspaceFolders = vscode.workspace.workspaceFolders;
+        console.log(`workspaceFolders: ${JSON.stringify(workspaceFolders)}`);
+        if(!workspaceFolders) {
+            return '';
+        }
+        const workspaceFolderPath = workspaceFolders[0].uri.fsPath;
+        console.log(`workspaceFolderPath: ${workspaceFolderPath}`);
+        return workspaceFolderPath;
+    }   
 
     createFile(currentDirectory, fileName) {
         const filePath = path.join(currentDirectory, fileName);
         // fill the file with a YAML frontmatter
-        const data = `
-        ---
-        title: ${fileName}
-        published_at: ${new Date().toISOString()}
-        updated_at: ${new Date().toISOString()}
-        type: article
-        description: ${fileName}
-        link: /${new Date().getFullYear()}/${fileName}
-        image:
-        tags:[]
-        ---
-        `;
+        const data = `---\ntitle: ${fileName}\npublished_at: ${new Date().toISOString()}\nupdated_at: ${new Date().toISOString()}\ntype: article\ndescription: ${fileName}\nlink: /${new Date().getFullYear()}/${fileName}\nimage:\ntags:[]\n---`;
 
-        fs.writeFile(filePath, data, err => {
+        fs.writeFile(filePath, data.trim(), err => {
             if(err) {
                 console.log(err);
             }            
         });
+
+        // return the path of the created file
+        return filePath;
     }
 
     showErrorMessage(message) {
