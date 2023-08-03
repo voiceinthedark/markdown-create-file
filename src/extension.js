@@ -27,6 +27,7 @@ function activate(context) {
 			value: '',
 			ignoreFocusOut: true,			
 		}).then(function (fileName) {
+			app.readYmlFile(app.getConfigFilePath());
 			// Create file in current directory
 			let filepath = app.createFile(currentDirectory, fileName);
 			if(!filepath) {

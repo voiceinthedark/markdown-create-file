@@ -2,33 +2,38 @@
   "name": "markdown-blog-extension",
   "displayName": "Markdown Blog Extension",
   "description": "A companion extension to my markdown-blog which will create a new file in the current directory complete with the required Yaml scaffolding",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "publisher": "voiceinthedark",
   "license": "MIT",
   "icon": "voiceinthedark.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/voiceinthedark/markdown-create-file"
-  },  
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
   "categories": [
-    "Other", "Snippets"
+    "Other",
+    "Snippets"
   ],
   "activationEvents": [],
   "main": "./src/extension.js",
   "contributes": {
-    "commands": [{
-      "command": "markdown-blog-extension.createFile",
-      "title": "Markdown Blog: Create File"
-    }],
-    "keybindings": [{
-      "command": "markdown-blog-extension.createFile",
-      "key": "ctrl+shift+c",
-      "mac": "cmd+shift+c",
-      "when": "editorTextFocus"
-    }]
+    "commands": [
+      {
+        "command": "markdown-blog-extension.createFile",
+        "title": "Markdown Blog: Create File"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "markdown-blog-extension.createFile",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c",
+        "when": "editorTextFocus"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
@@ -36,14 +41,17 @@
     "test": "node ./test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.80.0",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "20.2.5",
+    "@types/vscode": "^1.80.0",
+    "@vscode/test-electron": "^2.3.2",
     "eslint": "^8.41.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
-    "typescript": "^5.1.3",
-    "@vscode/test-electron": "^2.3.2"
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
   }
 }
