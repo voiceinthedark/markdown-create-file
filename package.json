@@ -3,6 +3,13 @@
   "displayName": "Markdown Blog Extension",
   "description": "A companion extension to my markdown-blog which will create a new file in the current directory complete with the required Yaml scaffolding",
   "version": "0.4.0",
+  "publisher": "voiceinthedark",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/voiceinthedark/markdown-create-file"
+  },  
   "engines": {
     "vscode": "^1.80.0"
   },
