@@ -2,6 +2,7 @@ const vscode = require('vscode');
 const path = require('path');
 const fs = require('fs');
 const yaml = require('js-yaml');
+const { title } = require('process');
 
 class App {
   /**
@@ -52,17 +53,22 @@ class App {
     const filePath = path.join(currentDirectory, fileName);
 
     let data;
-    if(this.readYmlFile(this.getConfigFilePath())) {
+    if (this.readYmlFile(this.getConfigFilePath())) {
       data = this.readYmlFile(this.getConfigFilePath());
+      data['published_at'] = new Date().toISOString();
+      data['updated_at'] = new Date().toISOString();
+      // convert filename to title, replace underscores and dashes with spaces
+      data['title'] = originalFilename.split('.')[0].replace(/_/g, ' ').replace(/-/g, ' ');
+      data['link'] = `/${new Date().getFullYear()}/${originalFilename.split('.')[0]}`;
+      data = `---\n${yaml.dump(data)}---`;
+    } else {
+      // fill the file with a YAML frontmatter
+      data = `---\ntitle: ${
+        originalFilename.split('.')[0]
+      }\npublished_at: ${new Date().toISOString()}\nupdated_at: ${new Date().toISOString()}\ntype: article\ndescription: Enter description here\nlink: /${new Date().getFullYear()}/${originalFilename}\nimage: images/image.png\ntags: [tag1,tag2]\n---`;
     }
 
-
-    // fill the file with a YAML frontmatter
-    /* data = `---\ntitle: ${
-      originalFilename.split('.')[0]
-    }\npublished_at: ${new Date().toISOString()}\nupdated_at: ${new Date().toISOString()}\ntype: article\ndescription: Enter description here\nlink: /${new Date().getFullYear()}/${originalFilename}\nimage: images/image.png\ntags: [tag1,tag2]\n---`; */
-
-    fs.writeFile(filePath, yaml.dump(data), (err) => {
+    fs.writeFile(filePath, data, (err) => {
       if (err) {
         console.log(err);
       }

@@ -9,6 +9,26 @@ It can be used with my blog application or as a standalone extension to quickly 
 `ctrl + shift + p` to open vscode command palette and search for `Markdown Blog: Create File`
 Or inside the active text editor press `ctrl + shift + c`
 
+### (optional) using external yaml configuration
+In order to use an external yaml configuration file, you can add a **`markdown-blog.yaml`** file to the root of your project and then use the following command:
+`Markdown Blog: Create File`.
+
+#### Yaml front-matter config example
+
+The markdown-blog.yaml file should look like this:
+```yaml
+title: How To Send data from a Vue Page to a persistent Layout
+published_at: 2023-07-30T00:39:00+03:00
+updated_at: 2023-08-02T22:56:00+03:00
+type: article
+description: How to send data from a vue page to a persistent layout in Laravel + inertiajs
+link: /2023/2023-07-30-how-to-send-data-from-page-to-layout
+image: /images/2023-07-31-04-22-45.png
+tags: [vue, inertia, laravel, php, blog, layout]
+```
+The `published_at` and `updated_at` fields can be left empty since they will be automatically generated.
+The title and link will also be automatically generated according to user input.
+
 ## Installation
 To install an extension, run the following command:
 `code --install-extension markdown-blog-extension-0.4.0.vsix`
@@ -19,10 +39,14 @@ or download from Visual studio marketplace: [Marketplace](https://marketplace.vi
 
 Initial release of the extension
 
+### 0.5.0
+- Added Yaml front-matter config file parsing.
+    The extension will search for a file called `markdown-blog.yaml` and will parse the front-matter from it. The file needs to be in a correct yaml format.
+
 
 ## Future plans
 
-- [ ] Add external yaml configuration
+- [x] Add external yaml configuration
 - [ ] Update Yaml front-matter on save
 
 ---
