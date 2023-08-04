@@ -2,7 +2,6 @@ const vscode = require('vscode');
 const path = require('path');
 const fs = require('fs');
 const yaml = require('js-yaml');
-const { title } = require('process');
 
 class App {
   /**
@@ -46,6 +45,16 @@ class App {
    * @return {string} The path of the created file.
    */
   createFile(currentDirectory, fileName) {
+    if(!fileName.endsWith('.md')) {
+      fileName += '.md';
+    }
+    // if the name contains spaces or special characters, replace them with dashes
+    if(fileName.includes(' ')) {
+      fileName = fileName.split(/\s+/g).join('-');
+    }
+
+    // if the file already exists, ask the user if they want to overwrite it
+
     const originalFilename = fileName;
     // prefixes filename with the current date
     fileName = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}-${fileName}`;
@@ -97,7 +106,7 @@ class App {
         const folderPath = folder.uri.fsPath;
         const filePath = `${folderPath}/markdown-blog.yaml`;
         if (fs.existsSync(filePath)) {
-          console.log(`configFilePath: ${filePath}`);
+          // console.log(`configFilePath: ${filePath}`);
           configFilePath = filePath;
           break;
         }
@@ -111,12 +120,12 @@ class App {
     let config = null;
     if (filePath) {
       try {
-        console.log('Reading file:', filePath);
+        // console.log('Reading file:', filePath);
         const configContent = fs.readFileSync(filePath, 'utf8');
-        console.log('File content:', configContent);
+        // console.log('File content:', configContent);
 
         config = yaml.load(configContent);
-        console.log('Parsed config:', config);
+        // console.log('Parsed config:', config);
       } catch (error) {
         console.error('Error reading YAML file:', error);
       }
