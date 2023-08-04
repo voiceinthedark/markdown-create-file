@@ -54,6 +54,9 @@ Initial release of the extension
 ### 0.5.2
 - Fixed date time formatting
 
+### 0.5.3
+- Changed user prompt to be more explanatory
+
 
 ## Future plans
 

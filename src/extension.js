@@ -23,9 +23,10 @@ function activate(context) {
 		}
 
 		vscode.window.showInputBox({
-			placeHolder: 'Enter file name',
+			placeHolder: 'My-new-article.md',
 			value: '',
-			ignoreFocusOut: true,			
+			ignoreFocusOut: true,	
+			prompt: 'Enter file name',			
 		}).then(function (fileName) {
 			// Create file in current directory
 			let filepath = app.createFile(currentDirectory, fileName);
