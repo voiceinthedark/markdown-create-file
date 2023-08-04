@@ -1,8 +1,22 @@
 # Markdown Blog Companion Extension
 
+<iframe src="https://ghbtns.com/github-btn.html?user=voiceinthedark&repo=markdown-blog-extension&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+
 A markdown extension which is a companion to my [markdown-blog](https://github.com/voiceinthedark/markdown-blog). 
 A new markdown file will be created in the current directory with the required Yaml front-matter required to display the blog's articles.
 It can be used with my blog application or as a standalone extension to quickly create a markdown article with the Front matter already preconfigured.
+
+## Features
+- Create a new markdown file in the current directory
+- Yaml front-matter parsing
+- External yaml configuration
+- Auto update on save
+
+![Add new file](add_new_file.gif)
+
+![Save file](save_file.gif)
+
+
 
 ## Usage
 
