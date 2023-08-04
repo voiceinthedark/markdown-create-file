@@ -59,13 +59,16 @@ Initial release of the extension
 ### 0.6.0
 - Added auto update field feature
 
+### 0.6.1
+- Code cleanup
+- Changed and optimized autoupdater to work only on the first occurence of `updated_at`
+
 
 ## Future plans
 
 - [x] Add external yaml configuration
 - [x] Update Yaml front-matter on save
-
-
+- [ ] Add config option to turn off auto update
 
 ---
 ## For more information

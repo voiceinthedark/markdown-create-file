@@ -11,9 +11,9 @@ function activate(context) {
     'markdown-blog-extension.createFile',
     function () {
       let currentDirectory = app.getCurrentDirectory();
-      console.log(currentDirectory);
+    //   console.log(currentDirectory);
       let workspacePath = app.getWorkspacePath();
-      console.log(workspacePath);
+    //   console.log(workspacePath);
       if (!currentDirectory) {
         currentDirectory = workspacePath;
         if (!currentDirectory) {
@@ -28,6 +28,7 @@ function activate(context) {
           value: '',
           ignoreFocusOut: true,
           prompt: 'Enter file name',
+		  title: 'Create a new Markdown File',
         })
         .then(function (fileName) {
           // Create file in current directory
@@ -42,15 +43,15 @@ function activate(context) {
     }
   );
 
-  let disposable2 = vscode.workspace.onWillSaveTextDocument((event) => {
+  let disposableAutoUpdateYaml = vscode.workspace.onWillSaveTextDocument((event) => {
     if (event.document.fileName.endsWith('.md')) {
-      console.log('saving ' + event.document.fileName);
+    //   console.log('saving ' + event.document.fileName);
       app.updateField();
     } else console.log(`${event.document.fileName} is not a markdown file`);
   });
 
   context.subscriptions.push(disposable);
-  context.subscriptions.push(disposable2);
+  context.subscriptions.push(disposableAutoUpdateYaml);
 }
 
 // This method is called when your extension is deactivated

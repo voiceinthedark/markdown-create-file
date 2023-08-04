@@ -24,3 +24,8 @@ The extension will search for a file called `markdown-blog.yaml` and will parse 
 - Added auto update field feature
     Any markdown file that contains a Yaml front-matter field `updated_at` 
     will be automatically updated on save.
+
+### [0.6.1] 2023-08-04
+- Code cleanup
+- Changed and optimized autoupdater to work only on the first occurence of `updated_at`
+

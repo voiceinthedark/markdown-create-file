@@ -28,12 +28,12 @@ class App {
   getWorkspacePath() {
     // Get the active workspace folder
     let workspaceFolders = vscode.workspace.workspaceFolders;
-    console.log(`workspaceFolders: ${JSON.stringify(workspaceFolders)}`);
+    // console.log(`workspaceFolders: ${JSON.stringify(workspaceFolders)}`);
     if (!workspaceFolders) {
       return '';
     }
     const workspaceFolderPath = workspaceFolders[0].uri.fsPath;
-    console.log(`workspaceFolderPath: ${workspaceFolderPath}`);
+    // console.log(`workspaceFolderPath: ${workspaceFolderPath}`);
     return workspaceFolderPath;
   }
 
@@ -107,6 +107,15 @@ class App {
     vscode.window.showErrorMessage(message);
   }
 
+  showInfoMessage(message) {
+    vscode.window.showInformationMessage(message);
+  }
+
+  /**
+   * Retrieves the path to the configuration file.
+   *
+   * @return {string} The path to the configuration file, or null if the file does not exist.
+   */
   getConfigFilePath() {
     // Step 1: Check if config file exists in workspace
     const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -125,6 +134,12 @@ class App {
     return configFilePath;
   }
 
+  /**
+   * Reads and parses a YAML file.
+   *
+   * @param {string} filePath - The path to the YAML file.
+   * @return {object | null} The parsed YAML content, or null if there was an error.
+   */
   readYmlFile(filePath) {
     // Step 2: Read and parse YAML front-matter from config file
     let config = null;
@@ -163,6 +178,7 @@ class App {
             'updated_at: ' + new Date().toISOString()
           );
         });
+        break;
       }
     }    
   }

@@ -2,7 +2,7 @@
   "name": "markdown-blog-extension",
   "displayName": "Markdown Blog Extension",
   "description": "A companion extension to my markdown-blog which will create a new file in the current directory complete with the required Yaml scaffolding",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "publisher": "voiceinthedark",
   "license": "MIT",
   "icon": "voiceinthedark.png",
