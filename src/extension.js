@@ -45,8 +45,11 @@ function activate(context) {
 
   let disposableAutoUpdateYaml = vscode.workspace.onWillSaveTextDocument((event) => {
     if (event.document.fileName.endsWith('.md')) {
-    //   console.log('saving ' + event.document.fileName);
-      app.updateField();
+      const config = vscode.workspace.getConfiguration('markdown-blog');
+      const autoUpdateYaml = config.get('autoUpdateYaml');
+      if(autoUpdateYaml){
+        app.updateField();
+      }
     } else console.log(`${event.document.fileName} is not a markdown file`);
   });
 

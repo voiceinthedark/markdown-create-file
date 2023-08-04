@@ -29,3 +29,6 @@ The extension will search for a file called `markdown-blog.yaml` and will parse 
 - Code cleanup
 - Changed and optimized autoupdater to work only on the first occurence of `updated_at`
 
+### [0.6.3] 2023-08-05
+- Added extension configuration
+  `autoUpdateYaml` is set to true by default. Setting it to false will stop updating the yaml on save.

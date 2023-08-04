@@ -10,7 +10,7 @@ It can be used with my blog application or as a standalone extension to quickly 
 - Create a new markdown file in the current directory
 - Yaml front-matter parsing
 - External yaml configuration
-- Auto update on save
+- Auto update on save (can be turned off in config)
 
 ![Add new file](add_new_file.gif)
 
@@ -45,7 +45,7 @@ image: /images/2023-07-31-04-22-45.png
 tags: [vue, inertia, laravel, php, blog, layout]
 ```
 The `published_at` and `updated_at` fields can be left empty since they will be automatically generated.
-The title and link will also be automatically generated according to user input.
+The `title` and `link` will also be automatically generated according to user input.
 
 ## Installation
 To install an extension, run the following command:
@@ -77,12 +77,14 @@ Initial release of the extension
 - Code cleanup
 - Changed and optimized autoupdater to work only on the first occurence of `updated_at`
 
+### 0.6.3
+- Added extension configuration
 
 ## Future plans
 
 - [x] Add external yaml configuration
 - [x] Update Yaml front-matter on save
-- [ ] Add config option to turn off auto update
+- [x] Add config option to turn off auto update
 
 ---
 ## For more information
