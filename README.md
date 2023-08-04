@@ -9,6 +9,10 @@ It can be used with my blog application or as a standalone extension to quickly 
 `ctrl + shift + p` to open vscode command palette and search for `Markdown Blog: Create File`
 Or inside the active text editor press `ctrl + shift + c`
 
+> user prompt accepts a file name of markdown type. If no extension is provided it will be assumed to be markdown and added automatically.
+> Prefered file name format is `a-title-of-your-article.md` or `a-title-of-your-article`, if filename is not sluggified it will be sluggified automatically.
+> As an example a filename of `a new article` will become `a-new-article.md` automatically.
+
 ### (optional) using external yaml configuration
 In order to use an external yaml configuration file, you can add a **`markdown-blog.yaml`** file to the root of your project and then use the following command:
 `Markdown Blog: Create File`.
@@ -46,6 +50,9 @@ Initial release of the extension
 ### 0.5.1
 - Fixed issue with userinput containing spaces
 - Fixed issue with user input not ending with a `.md`
+
+### 0.5.2
+- Fixed date time formatting
 
 
 ## Future plans

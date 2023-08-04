@@ -56,8 +56,8 @@ class App {
     // if the file already exists, ask the user if they want to overwrite it
 
     const originalFilename = fileName;
-    // prefixes filename with the current date
-    fileName = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}-${fileName}`;
+    // prefixes filename with the current date and format month and day
+    fileName = `${new Date().getFullYear()}-${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${(new Date().getDate()).toString().padStart(2, '0')}-${fileName}`;
 
     const filePath = path.join(currentDirectory, fileName);
 

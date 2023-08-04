@@ -13,3 +13,6 @@ The extension will search for a file called `markdown-blog.yaml` and will parse 
 ### [0.5.1] 2023-08-04
 - Fixed issue with userinput containing spaces
 - Fixed issue with user input not ending with a `.md`
+
+### [0.5.2] 2023-08-04
+- Fixed datetime formatting
