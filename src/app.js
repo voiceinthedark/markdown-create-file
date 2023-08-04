@@ -45,11 +45,11 @@ class App {
    * @return {string} The path of the created file.
    */
   createFile(currentDirectory, fileName) {
-    if(!fileName.endsWith('.md')) {
+    if (!fileName.endsWith('.md')) {
       fileName += '.md';
     }
     // if the name contains spaces or special characters, replace them with dashes
-    if(fileName.includes(' ')) {
+    if (fileName.includes(' ')) {
       fileName = fileName.split(/\s+/g).join('-');
     }
 
@@ -57,7 +57,12 @@ class App {
 
     const originalFilename = fileName;
     // prefixes filename with the current date and format month and day
-    fileName = `${new Date().getFullYear()}-${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${(new Date().getDate()).toString().padStart(2, '0')}-${fileName}`;
+    fileName = `${new Date().getFullYear()}-${(new Date().getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${new Date()
+      .getDate()
+      .toString()
+      .padStart(2, '0')}-${fileName}`;
 
     const filePath = path.join(currentDirectory, fileName);
 
@@ -67,8 +72,13 @@ class App {
       data['published_at'] = new Date().toISOString();
       data['updated_at'] = new Date().toISOString();
       // convert filename to title, replace underscores and dashes with spaces
-      data['title'] = originalFilename.split('.')[0].replace(/_/g, ' ').replace(/-/g, ' ');
-      data['link'] = `/${new Date().getFullYear()}/${originalFilename.split('.')[0]}`;
+      data['title'] = originalFilename
+        .split('.')[0]
+        .replace(/_/g, ' ')
+        .replace(/-/g, ' ');
+      data['link'] = `/${new Date().getFullYear()}/${
+        originalFilename.split('.')[0]
+      }`;
       data = `---\n${yaml.dump(data)}---`;
     } else {
       // fill the file with a YAML frontmatter
@@ -131,6 +141,30 @@ class App {
       }
     }
     return config;
+  }
+
+  // When the user save the document, this function is called
+  // it will check if the current document is a markdown file
+  // and if it has a YAML frontmatter with an updated_at field
+  // if it does, it will update the updated_at field in the YAML frontmatter
+  updateField() {
+    // Step 3: Update the updated_at field in the YAML frontmatter
+    let editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      return;
+    }
+
+    let document = editor.document;
+    for (let line = 0; line < document.lineCount; line++) {
+      if (document.lineAt(line).text.search('updated_at:') > -1) {
+        editor.edit((editBuilder) => {
+          editBuilder.replace(
+            document.lineAt(line).range,
+            'updated_at: ' + new Date().toISOString()
+          );
+        });
+      }
+    }    
   }
 }
 

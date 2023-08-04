@@ -40,7 +40,6 @@ or download from Visual studio marketplace: [Marketplace](https://marketplace.vi
 
 ## Release Notes
 ### 0.4.0
-
 Initial release of the extension
 
 ### 0.5.0
@@ -57,11 +56,16 @@ Initial release of the extension
 ### 0.5.3
 - Changed user prompt to be more explanatory
 
+### 0.6.0
+- Added auto update field feature
+
 
 ## Future plans
 
 - [x] Add external yaml configuration
-- [ ] Update Yaml front-matter on save
+- [x] Update Yaml front-matter on save
+
+
 
 ---
 ## For more information
